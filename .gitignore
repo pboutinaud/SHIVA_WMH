@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+WMH/v0/v0-T1-FLAIR.WMH.tgz
+WMH/v0/T1-FLAIR.WMH/20220412-192541_Unet3Dv2-10.7.2-1.8-FLAIR.WMH_fold_WMH_1x5_2ndUnat_fold_0_model.h5
+WMH/v0/T1-FLAIR.WMH/20220412-192541_Unet3Dv2-10.7.2-1.8-FLAIR.WMH_fold_WMH_1x5_2ndUnat_fold_1_model.h5
+WMH/v0/T1-FLAIR.WMH/20220412-192541_Unet3Dv2-10.7.2-1.8-FLAIR.WMH_fold_WMH_1x5_2ndUnat_fold_2_model.h5
+WMH/v0/T1-FLAIR.WMH/20220412-192541_Unet3Dv2-10.7.2-1.8-FLAIR.WMH_fold_WMH_1x5_2ndUnat_fold_3_model.h5
+WMH/v0/T1-FLAIR.WMH/20220412-192541_Unet3Dv2-10.7.2-1.8-FLAIR.WMH_fold_WMH_1x5_2ndUnat_fold_4_model.h5
