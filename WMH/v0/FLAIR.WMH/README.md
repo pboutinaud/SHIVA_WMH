@@ -1,7 +1,5 @@
 ## The segmentation models
 
-* WMH/v0/T1-FLAIR.WMH: is a multimodal segmentation model described in the publication.
-    * due to file size limitation, the models can be found [here](https://cloud.efixia.com/sharing/Tq8LqpCbc) : https://cloud.efixia.com/sharing/Tq8LqpCbc
 * WMH/v0/FLAIR.WMH: is a monomodal segmentation model using only FLAIR modality.
     * due to file size limitation, the models can be found [here](https://cloud.efixia.com/sharing/bOzPqhGiz) : https://cloud.efixia.com/sharing/bOzPqhGiz
 
