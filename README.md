@@ -22,7 +22,7 @@ For multi-modal models trained with T1 + FLAIR images, the models were trained w
 A segmentation can be computed as the average of the inference of several models (depending on the number of folds used in the training for a particular model), the provided models can be found in the directories:
 
 * WMH/v1/T1-FLAIR.WMH: is a multimodal segmentation model based on v0 and trained with more images from other datasets.
-    * due to file size limitation, the models can be found [here](https://cloud.efixia.com/sharing/jxHpYIJQB : https://cloud.efixia.com/sharing/jxHpYIJQB
+    * due to file size limitation, the models can be found [here](https://cloud.efixia.com/sharing/jxHpYIJQB) : https://cloud.efixia.com/sharing/jxHpYIJQB
 
 * WMH/v0/T1-FLAIR.WMH: is a multimodal segmentation model described in the publication.
     * due to file size limitation, the models can be found [here](https://cloud.efixia.com/sharing/Tq8LqpCbc) : https://cloud.efixia.com/sharing/Tq8LqpCbc
