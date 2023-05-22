@@ -21,15 +21,18 @@ For multi-modal models trained with T1 + FLAIR images, the models were trained w
 
 A segmentation can be computed as the average of the inference of several models (depending on the number of folds used in the training for a particular model), the provided models can be found in the directories:
 
+* WMH/v1/T1-FLAIR.WMH: is a multimodal segmentation model based on v0 and trained with more images from other datasets.
+    * due to file size limitation, the models can be found [here](https://cloud.efixia.com/sharing/jxHpYIJQB : https://cloud.efixia.com/sharing/jxHpYIJQB
+
 * WMH/v0/T1-FLAIR.WMH: is a multimodal segmentation model described in the publication.
     * due to file size limitation, the models can be found [here](https://cloud.efixia.com/sharing/Tq8LqpCbc) : https://cloud.efixia.com/sharing/Tq8LqpCbc
 * WMH/v0/FLAIR.WMH: is a monomodal segmentation model using only FLAIR modality.
     * due to file size limitation, the models can be found [here](https://cloud.efixia.com/sharing/bOzPqhGiz) : https://cloud.efixia.com/sharing/bOzPqhGiz
 
-The resulting segmentation is an image with voxels values in [0, 1] (proxy for the probability of detection of WMH) that must be thresholded to get the final segmentation. A threshold of 0.2 has been used successfully but that depends on the preferred balance between precision and sensitivity.
+The resulting segmentation is an image with voxels values in [0, 1] (proxy for the probability of detection of WMH) that must be thresholded to get the final segmentation. A threshold of 0.5 has been used successfully but that depends on the preferred balance between precision and sensitivity.
 
 ## Requirements
-The models were trained with Tensorflow >= 2.7 used with Python 3.7, they are stored in the H5 format (there is a compatibility problem when reading tendorflow H5 files by using Python version > 3.7).
+The models were trained with Tensorflow >= 2.7 used with Python 3.7, they are stored in the H5 format (there is a compatibility problem when reading tensorflow H5 files by using Python version > 3.7).
 
 The provided python script *predict_one_file.py* can be used as an example of usage of the model. It needs the *nibabel* python library to be able to read NIfTI files. 
 
