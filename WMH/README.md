@@ -1,7 +1,7 @@
 ## The segmentation models
 
 * WMH/v1/T1-FLAIR.WMH: is a multimodal segmentation model based on v0 and trained with more images from other datasets.
-    * due to file size limitation, the models can be found [here](https://cloud.efixia.com/sharing/jxHpYIJQB : https://cloud.efixia.com/sharing/jxHpYIJQB
+    * due to file size limitation, the models can be found [here](https://cloud.efixia.com/sharing/jxHpYIJQB) : https://cloud.efixia.com/sharing/jxHpYIJQB
 
 * WMH/v0/T1-FLAIR.WMH: is a multimodal segmentation model described in the publication.
     * due to file size limitation, the models can be found [here](https://cloud.efixia.com/sharing/Tq8LqpCbc) : https://cloud.efixia.com/sharing/Tq8LqpCbc
