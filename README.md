@@ -2,6 +2,8 @@
 
 This repository contains the trained tensorflow models for the 3D Segmentation of White Matter Hyperintensities (WMH) from multi-modal T1-Weighted + FLAIR MR Images with a 3D U-Shaped Neural Network (U-net) as described in the scientific publication cited below.
 
+![Gif Image](https://github.com/pboutinaud/SHIVA_PVS/blob/main/docs/Images/SHIVA_BrainTools_small2.gif)
+
 ## IP, Licencing & Usage
 
 **The inferences created by these models should not be used for clinical purposes.**
@@ -19,27 +21,50 @@ For mono-modal models, the models were trained with images with a size of 160 ×
 
 For multi-modal models trained with T1 + FLAIR images, the models were trained with FLAIR images coregistered to the T1 and added as a second channel: 160 × 214 × 176 x 2 voxels.
 
-A segmentation can be computed as the average of the inference of several models (depending on the number of folds used in the training for a particular model), the provided models can be found in the directories:
+The segmentation can be computed as the average of the inference of several models (depending on the number of folds used in the training for a particular model). The resulting segmentation is an image with voxels values in [0, 1] (proxy for the probability of detection of WMH) that must be thresholded to get the actual segmentation. A threshold of 0.5 has been used successfully but that depends on the preferred balance between precision and sensitivity.
 
-* WMH/v1/T1-FLAIR.WMH: is a multimodal segmentation model based on v0 and trained with more images from other datasets.
+To access the models :
+* v1/T1-FLAIR.WMH: is a multimodal segmentation model based on v0 and trained with more images from other datasets.
     * due to file size limitation, the models can be found [here](https://cloud.efixia.com/sharing/jxHpYIJQB) : https://cloud.efixia.com/sharing/jxHpYIJQB
     * Checksum : a5523d7d3a8f8adde95c2baf73518afb
 
-* WMH/v0/T1-FLAIR.WMH: is a multimodal segmentation model described in the publication.
+* v0/T1-FLAIR.WMH: is a multimodal segmentation model described in the publication.
     * due to file size limitation, the models can be found [here](https://cloud.efixia.com/sharing/Tq8LqpCbc) : https://cloud.efixia.com/sharing/Tq8LqpCbc
     * Checksum : a371a14c641305ab81efb21545623fbf
-* WMH/v0/FLAIR.WMH: is a monomodal segmentation model using only FLAIR modality.
+* v0/FLAIR.WMH: is a monomodal segmentation model using only FLAIR modality.
     * due to file size limitation, the models can be found [here](https://cloud.efixia.com/sharing/bOzPqhGiz) : https://cloud.efixia.com/sharing/bOzPqhGiz
     * Checksum : 63602474fa62af1c83efabefd0bd0c79
-
-The resulting segmentation is an image with voxels values in [0, 1] (proxy for the probability of detection of WMH) that must be thresholded to get the final segmentation. A threshold of 0.5 has been used successfully but that depends on the preferred balance between precision and sensitivity.
 
 ## Requirements
 The models were trained with Tensorflow >= 2.7 used with Python 3.7, they are stored in the H5 format (there is a compatibility problem when reading tensorflow H5 files by using Python version > 3.7).
 
-The provided python script *predict_one_file.py* can be used as an example of usage of the model. It needs the *nibabel* python library to be able to read NIfTI files. 
-
 A NVIDIA GPU with at least 9Go of RAM is needed to compute inferences with the trained models.
+
+## Usage
+The provided python script *predict_one_file.py* can be used as an example of usage of the model. It needs the *nibabel* python library to be able to read NIfTI files.
+
+Here is the main part of the script, assuming that he images are in a numpy array with the correct shape (*nb of images*, 160, 214, 176, *number of modality to use for this model*) and that you have enough CPU RAM to load all images in one array (else use a Tensorflow dataset) :
+````python
+# Load models & predict
+predictions = []
+for predictor_file in predictor_files:  # predictor_files is the list of the model's paths
+    tf.keras.backend.clear_session()
+    try:
+        model = tf.keras.models.load_model(
+            predictor_file,
+            compile=False,
+            custom_objects={"tf": tf})
+    except Exception as err:
+        print(f'\n\tWARNING : Exception loading model : {predictor_file}\n{err}')
+        continue
+    # compute the segmentation for this model
+    prediction = model.predict(images)
+    # append segmentation for this
+    predictions.append(prediction)
+
+# Average all predictions
+predictions = np.mean(predictions, axis=0)
+````
 
 ## Acknowledgements
 This work has been done in collaboration between the [Fealinx](http://www.fealinx-biomedical.com/en/) company and the [GIN](https://www.gin.cnrs.fr/en/) laboratory (Groupe d'Imagerie Neurofonctionelle, UMR5293, IMN, Univ. Bordeaux, CEA , CNRS) with grants from the Agence Nationale de la Recherche (ANR) with the projects [GinesisLab](http://www.ginesislab.fr/) (ANR 16-LCV2-0006-01) and [SHIVA](https://rhu-shiva.com/en/) (ANR-18-RHUS-0002)
