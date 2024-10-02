@@ -53,7 +53,7 @@ This work has been done in collaboration between the [Fealinx](http://www.fealin
 White matter hyperintensities (WMHs) are well-established markers of cerebral small vessel disease (cSVD), and associated with increased risk of stroke, dementia, and mortality (Debette & Markus 2010). Although their prevalence increases with age, small and punctate WMHs have been reported with surprisingly high frequency even in young, neurologically asymptomatic adults under 40 years of age (Keřkovský et al. 2019; Williamson et al. 2018). In order to study the emergence of WMHs and their progression throughout the adult lifespan, it is critical to have tools that can automatically segment and quantify both small and large WMHs accurately. However, most automatic methods published to date are optimised for detection in older subjects or patients with multiple sclerosis, who typically manifest a higher load of large WMHs. Here, we present a deep-learning (DL) based algorithm that can be used to segment WMHs across a range of severity, including small WMH found in younger subjects.
 
 ## Publication
-
+http://doi.org/10.1002/hbm.26548 
 ```
 Tsuchida, A., V. Verrecchia, P. Boutinaud, S. Debette, C. Tzourio and M. Joliot (2022). Early detection of white matter hyperintensities using SHIVA-WMH detector. Organization of Human Brain Mapping, Glasgow.
 ```
