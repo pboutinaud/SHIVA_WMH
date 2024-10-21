@@ -27,13 +27,17 @@ To access the models :
 * v1/T1-FLAIR.WMH: is a multimodal segmentation model based on v0 and trained with more images from other datasets.
     * due to file size limitation, the models can be found [here](https://cloud.efixia.com/sharing/jxHpYIJQB) : https://cloud.efixia.com/sharing/jxHpYIJQB
     * Checksum : a5523d7d3a8f8adde95c2baf73518afb
+    * JSON file for SHiVAi pipeline: [model_info_t1-flair-wmh-v1.json](model_info_t1-flair-wmh-v1.json)
 
 * v0/T1-FLAIR.WMH: is a multimodal segmentation model described in the publication.
     * due to file size limitation, the models can be found [here](https://cloud.efixia.com/sharing/Tq8LqpCbc) : https://cloud.efixia.com/sharing/Tq8LqpCbc
     * Checksum : a371a14c641305ab81efb21545623fbf
+    * JSON file for SHiVAi pipeline: [model_info_t1-flair-wmh-v0.json](model_info_t1-flair-wmh-v0.json)
+
 * v0/FLAIR.WMH: is a monomodal segmentation model using only FLAIR modality.
     * due to file size limitation, the models can be found [here](https://cloud.efixia.com/sharing/bOzPqhGiz) : https://cloud.efixia.com/sharing/bOzPqhGiz
     * Checksum : 63602474fa62af1c83efabefd0bd0c79
+    * JSON file for SHiVAi pipeline: [model_info_flair-wmh.json](model_info_flair-wmh.json)
 
 ## Requirements
 The models were trained with Tensorflow >= 2.7 used with Python 3.7, they are stored in the H5 format (there is a compatibility problem when reading tensorflow H5 files by using Python version > 3.7).
