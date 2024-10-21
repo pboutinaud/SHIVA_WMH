@@ -1,0 +1,31 @@
+{
+  "version": "v0",
+  "release date": "12/04/2022",
+  "author": "Philippe Boutinaud",
+  "target": "WMH",
+  "modalities": [
+    "flair"
+  ],
+  "files": [
+    {
+      "name": "FLAIR.WMH/20220412-192541_Unet3Dv2-10.7.2-1.8-FLAIR.WMH_fold_WMH_1x5_2ndUnat_fold_4_model.h5",
+      "md5": "62d7f8cc3fc260b4263e163ee771d8a9"
+    },
+    {
+      "name": "FLAIR.WMH/20220412-192541_Unet3Dv2-10.7.2-1.8-FLAIR.WMH_fold_WMH_1x5_2ndUnat_fold_3_model.h5",
+      "md5": "50a303c56a58290c4a60ba580aeca5ce"
+    },
+    {
+      "name": "FLAIR.WMH/20220412-192541_Unet3Dv2-10.7.2-1.8-FLAIR.WMH_fold_WMH_1x5_2ndUnat_fold_2_model.h5",
+      "md5": "0320b7aa41aa47257b6f94d00a6f2bef"
+    },
+    {
+      "name": "FLAIR.WMH/20220412-192541_Unet3Dv2-10.7.2-1.8-FLAIR.WMH_fold_WMH_1x5_2ndUnat_fold_1_model.h5",
+      "md5": "beb4ad6a8b981c710a8c7fe87514b4f5"
+    },
+    {
+      "name": "FLAIR.WMH/20220412-192541_Unet3Dv2-10.7.2-1.8-FLAIR.WMH_fold_WMH_1x5_2ndUnat_fold_0_model.h5",
+      "md5": "2d6129c7b60e72391ac12db83bd6a40d"
+    }
+  ]
+}
