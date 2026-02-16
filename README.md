@@ -24,30 +24,40 @@ For multi-modal models trained with T1 + FLAIR images, the models were trained w
 The segmentation can be computed as the average of the inference of several models (depending on the number of folds used in the training for a particular model). The resulting segmentation is an image with voxels values in [0, 1] (proxy for the probability of detection of WMH) that must be thresholded to get the actual segmentation. A threshold of 0.5 has been used successfully but that depends on the preferred balance between precision and sensitivity.
 
 To access the models :
+* **v2/T1+FLAIR-WMH (recommended)**: New multi-modal production models (T1 + FLAIR) based on the ResUnet3D architecture, trained with Keras 3 / TensorFlow ≥ 2.17. Models are stored in TensorFlow SavedModel format (5 folds).
+    * Download: [cloud.efixia.com](https://cloud.efixia.com/sharing/cpb3eUvMa)
+    * SHA256 checksum : B2FE8D18FC62F4B1A447F0EF571781CF7656D808BD76A28C4B0CF53BDD391E3B
+    * JSON file for SHiVAi pipeline: [model_info_t1-flair-wmh-v2.json](model_info_t1-flair-wmh-v2.json)
+
 * v1/T1-FLAIR.WMH: is a multimodal segmentation model based on v0 and trained with more images from other datasets.
     * due to file size limitation, the models can be found [here](https://cloud.efixia.com/sharing/jxHpYIJQB) : https://cloud.efixia.com/sharing/jxHpYIJQB
-    * Checksum : a5523d7d3a8f8adde95c2baf73518afb
+    * MD5 checksum : a5523d7d3a8f8adde95c2baf73518afb
     * JSON file for SHiVAi pipeline: [model_info_t1-flair-wmh-v1.json](model_info_t1-flair-wmh-v1.json)
 
 * v0/T1-FLAIR.WMH: is a multimodal segmentation model described in the publication.
     * due to file size limitation, the models can be found [here](https://cloud.efixia.com/sharing/Tq8LqpCbc) : https://cloud.efixia.com/sharing/Tq8LqpCbc
-    * Checksum : a371a14c641305ab81efb21545623fbf
+    * MD5 checksum : a371a14c641305ab81efb21545623fbf
     * JSON file for SHiVAi pipeline: [model_info_t1-flair-wmh-v0.json](model_info_t1-flair-wmh-v0.json)
 
 * v0/FLAIR.WMH: is a monomodal segmentation model using only FLAIR modality.
     * due to file size limitation, the models can be found [here](https://cloud.efixia.com/sharing/bOzPqhGiz) : https://cloud.efixia.com/sharing/bOzPqhGiz
-    * Checksum : 63602474fa62af1c83efabefd0bd0c79
+    * MD5 checksum : 63602474fa62af1c83efabefd0bd0c79
     * JSON file for SHiVAi pipeline: [model_info_flair-wmh.json](model_info_flair-wmh.json)
 
 ## Requirements
-The models were trained with Tensorflow >= 2.7 used with Python 3.7, they are stored in the H5 format (there is a compatibility problem when reading tensorflow H5 files by using Python version > 3.7).
 
-A NVIDIA GPU with at least 9Go of RAM is needed to compute inferences with the trained models.
+### For new models (v2, SavedModel format)
+The models require TensorFlow ≥ 2.17 and were tested with Python 3.12 and TensorFlow 2.20. They are stored in the TensorFlow SavedModel format. A NVIDIA GPU with at least 9 GB of VRAM is recommended for inference (CPU inference is also supported but slower).
 
-To run the `predict_one_file.py` script, you will need a python environment with the following librairies:
-- tensorflow >= 2.7
+### For legacy models (v0/v1, H5 format)
+The models were trained with TensorFlow ≥ 2.7 and Python 3.7, stored in H5 format. Loading with newer Python/TensorFlow requires the `tf-keras` compatibility package and `TF_USE_LEGACY_KERAS=1`. On CPU, models using mixed_float16 are automatically rebuilt in float32.
+
+### Python dependencies
+To run the `predict_one_file.py` script, you will need a python environment with the following libraries:
+- tensorflow >= 2.17 (for new models) or tensorflow >= 2.7 (for legacy models)
 - numpy
 - nibabel
+- tf-keras (only needed for legacy .h5 models)
 
 If you don't know anything about python environment and libraries, you can find some documentation and installers on the [Anaconda website](https://docs.anaconda.com/). We recommend using the lightweight [Miniconda](https://docs.anaconda.com/miniconda/).
 
@@ -62,13 +72,39 @@ If you don't know anything about python environment and libraries, you can find 
 
 
 To run `predict_one_file.py` in your python environment you can check the help with the command `python predict_one_file.py -h` (replace "predict_one_file.py" with the full path to the script if it is not in the working directory).
-Here is an example of usage of the script with the following inputs:
+Here is an example of usage of the script with the new SavedModel models:
 - The `predict_one_file.py` script stored in `/myhome/my_scripts/`
 - Preprocessed Nifti images (volume shape must be 160 × 214 × 176 and voxel values between 0 and 1) stored (for the example) in the folder `/myhome/mydata/`
-- The WMH AI models stored (for the example) in `/myhome/wmh_models/v1`
+- The WMH AI models stored (for the example) in `/myhome/wmh_models/v2`
 - The ouput folder (for the example) `/myhome/my_results` needs to exist at launch
+
 ```bash
-python /myhome/my_scripts/predict_one_file.py -i /myhome/mydata/swi_image.nii.gz -b /myhome/mydata/input_brainmask.nii.gz -o /myhome/my_results/wmh_segmentation.nii.gz -m /myhome/wmh_models/v1/WMH_fold_1_model.h5 -m /myhome/wmh_models/v1/WMH_fold_2_model.h5 -m /myhome/wmh_models/v1/WMH_0_model.h5 
+# New T1+FLAIR SavedModel models (v2, recommended)
+python /myhome/my_scripts/predict_one_file.py \
+    -i /myhome/mydata/t1_image.nii.gz \
+    -i /myhome/mydata/flair_image.nii.gz \
+    -b /myhome/mydata/input_brainmask.nii.gz \
+    -o /myhome/my_results/wmh_segmentation.nii.gz \
+    --batch_size 1 --gpu 0 \
+    -m /myhome/wmh_models/v2/20241219-171815_ResUnet3D-8.9.2-1.5-T1_FLAIR.WMH_prod2_fold_0_bestvalloss.tf_inference \
+    -m /myhome/wmh_models/v2/20241219-172156_ResUnet3D-8.9.2-1.5-T1_FLAIR.WMH_prod2_fold_1_bestvalloss.tf_inference \
+    -m /myhome/wmh_models/v2/20241219-171815_ResUnet3D-8.9.2-1.5-T1_FLAIR.WMH_prod2_fold_2_bestvalloss.tf_inference \
+    -m /myhome/wmh_models/v2/20241219-172156_ResUnet3D-8.9.2-1.5-T1_FLAIR.WMH_prod2_fold_3_bestvalloss.tf_inference \
+    -m /myhome/wmh_models/v2/20241219-171815_ResUnet3D-8.9.2-1.5-T1_FLAIR.WMH_prod2_fold_4_bestvalloss.tf_inference
+```
+>Note that the brain mask input here with `-b /myhome/mydata/input_brainmask.nii.gz` is optional
+
+```bash
+# Legacy T1+FLAIR H5 models (v1)
+python /myhome/my_scripts/predict_one_file.py \
+    -i /myhome/mydata/t1_image.nii.gz \
+    -i /myhome/mydata/flair_image.nii.gz \
+    -b /myhome/mydata/input_brainmask.nii.gz \
+    -o /myhome/my_results/wmh_segmentation.nii.gz \
+    --gpu 0 \
+    -m /myhome/wmh_models/v1/WMH_fold_0_model.h5 \
+    -m /myhome/wmh_models/v1/WMH_fold_1_model.h5 \
+    -m /myhome/wmh_models/v1/WMH_fold_2_model.h5
 ```
 >Note that the brain mask input here with `-b /myhome/mydata/input_brainmask.nii.gz` is optional
 
@@ -76,26 +112,37 @@ python /myhome/my_scripts/predict_one_file.py -i /myhome/mydata/swi_image.nii.gz
 The provided python script `predict_one_file.py` can be used as is for running the model or can be used an example to build your own script.
 
 
-Here is the main part of the script, assuming that the images are in a numpy array with the correct shape (*nb of images*, 160, 214, 176, *number of modality to use for this model*) and that you have enough CPU RAM to load all images in one array (else use a Tensorflow dataset) :
+Here is the main part of the script for new SavedModel models, assuming that the images are in a numpy array with the correct shape (*nb of images*, 160, 214, 176, *number of modality to use for this model*):
 ````python
+import tensorflow as tf
+import numpy as np
+
 # Load models & predict
 predictions = []
-for predictor_file in predictor_files:  # predictor_files is the list of the model's paths
-    tf.keras.backend.clear_session()
-    try:
-        model = tf.keras.models.load_model(
-            predictor_file,
-            compile=False,
-            custom_objects={"tf": tf})
-    except Exception as err:
-        print(f'\n\tWARNING : Exception loading model : {predictor_file}\n{err}')
-        continue
-    # compute the segmentation for this model
-    prediction = model.predict(images)
-    # append segmentation for this
+for model_dir in model_dirs:  # model_dirs is the list of SavedModel directory paths
+    model = tf.saved_model.load(model_dir)
+    batch = tf.constant(images, dtype=tf.float32)
+    prediction = model.serve(batch).numpy()
     predictions.append(prediction)
 
 # Average all predictions
+predictions = np.mean(predictions, axis=0)
+````
+
+For legacy .h5 models (requires `tf-keras` and `TF_USE_LEGACY_KERAS=1`):
+````python
+import os
+os.environ["TF_USE_LEGACY_KERAS"] = "1"
+import tensorflow as tf
+import numpy as np
+
+predictions = []
+for predictor_file in predictor_files:
+    tf.keras.backend.clear_session()
+    model = tf.keras.models.load_model(predictor_file, compile=False, custom_objects={"tf": tf})
+    prediction = model.predict(images)
+    predictions.append(prediction)
+
 predictions = np.mean(predictions, axis=0)
 ````
 

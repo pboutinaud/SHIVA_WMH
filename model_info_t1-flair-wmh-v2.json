@@ -1,0 +1,32 @@
+{
+  "version": "v2",
+  "release date": "16/02/2026",
+  "author": "Philippe Boutinaud",
+  "url": "https://cloud.efixia.com/sharing/cpb3eUvMa",
+  "target": "WMH",
+  "modalities": [
+    "t1",
+    "flair"
+  ],
+  "architecture": "ResUnet3D-8.9.2-1.5",
+  "model_format": "SavedModel",
+  "tensorflow_min_version": "2.17",
+  "sha256_zip": "B2FE8D18FC62F4B1A447F0EF571781CF7656D808BD76A28C4B0CF53BDD391E3B",
+  "files": [
+    {
+      "name": "T1.FLAIR-WMH/20241219-171815_ResUnet3D-8.9.2-1.5-T1_FLAIR.WMH_prod2_fold_0_bestvalloss.tf_inference"
+    },
+    {
+      "name": "T1.FLAIR-WMH/20241219-172156_ResUnet3D-8.9.2-1.5-T1_FLAIR.WMH_prod2_fold_1_bestvalloss.tf_inference"
+    },
+    {
+      "name": "T1.FLAIR-WMH/20241219-171815_ResUnet3D-8.9.2-1.5-T1_FLAIR.WMH_prod2_fold_2_bestvalloss.tf_inference"
+    },
+    {
+      "name": "T1.FLAIR-WMH/20241219-172156_ResUnet3D-8.9.2-1.5-T1_FLAIR.WMH_prod2_fold_3_bestvalloss.tf_inference"
+    },
+    {
+      "name": "T1.FLAIR-WMH/20241219-171815_ResUnet3D-8.9.2-1.5-T1_FLAIR.WMH_prod2_fold_4_bestvalloss.tf_inference"
+    }
+  ]
+}
