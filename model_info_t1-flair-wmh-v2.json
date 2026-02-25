@@ -14,19 +14,24 @@
   "sha256_zip": "B2FE8D18FC62F4B1A447F0EF571781CF7656D808BD76A28C4B0CF53BDD391E3B",
   "files": [
     {
-      "name": "T1.FLAIR-WMH/20241219-171815_ResUnet3D-8.9.2-1.5-T1_FLAIR.WMH_prod2_fold_0_bestvalloss.tf_inference"
+      "name": "T1.FLAIR-WMH/20241219-171815_ResUnet3D-8.9.2-1.5-T1_FLAIR.WMH_prod2_fold_0_bestvalloss.tf_inference",
+      "md5": "6cef04c9f62e877381a05dd635a1b8a9"
     },
     {
-      "name": "T1.FLAIR-WMH/20241219-172156_ResUnet3D-8.9.2-1.5-T1_FLAIR.WMH_prod2_fold_1_bestvalloss.tf_inference"
+      "name": "T1.FLAIR-WMH/20241219-172156_ResUnet3D-8.9.2-1.5-T1_FLAIR.WMH_prod2_fold_1_bestvalloss.tf_inference",
+      "md5": "eb3624d8b0189e3e62445f0be577e602"
     },
     {
-      "name": "T1.FLAIR-WMH/20241219-171815_ResUnet3D-8.9.2-1.5-T1_FLAIR.WMH_prod2_fold_2_bestvalloss.tf_inference"
+      "name": "T1.FLAIR-WMH/20241219-171815_ResUnet3D-8.9.2-1.5-T1_FLAIR.WMH_prod2_fold_2_bestvalloss.tf_inference",
+      "md5": "0b5db530b34d9e6e2ee6b8cb1aa71766"
     },
     {
-      "name": "T1.FLAIR-WMH/20241219-172156_ResUnet3D-8.9.2-1.5-T1_FLAIR.WMH_prod2_fold_3_bestvalloss.tf_inference"
+      "name": "T1.FLAIR-WMH/20241219-172156_ResUnet3D-8.9.2-1.5-T1_FLAIR.WMH_prod2_fold_3_bestvalloss.tf_inference",
+      "md5": "7ca96569e71a5d39e6b72c62125ab8f0"
     },
     {
-      "name": "T1.FLAIR-WMH/20241219-171815_ResUnet3D-8.9.2-1.5-T1_FLAIR.WMH_prod2_fold_4_bestvalloss.tf_inference"
+      "name": "T1.FLAIR-WMH/20241219-171815_ResUnet3D-8.9.2-1.5-T1_FLAIR.WMH_prod2_fold_4_bestvalloss.tf_inference",
+      "md5": "e42f918af7fce5eeb2c0f643ed89c8f4"
     }
   ]
 }
