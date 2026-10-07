@@ -25,22 +25,22 @@ The segmentation can be computed as the average of the inference of several mode
 
 To access the models :
 * **v2/T1+FLAIR-WMH (recommended)**: New multi-modal production models (T1 + FLAIR) based on the ResUnet3D architecture, trained with Keras 3 / TensorFlow ≥ 2.17. Models are stored in TensorFlow SavedModel format (5 folds).
-    * Download: [cloud.efixia.com](https://cloud.efixia.com/sharing/cpb3eUvMa)
+    * Download: [cloud.efixia.com](https://cloud.efixia.com/sharing/Iae0B1old)
     * SHA256 checksum : B2FE8D18FC62F4B1A447F0EF571781CF7656D808BD76A28C4B0CF53BDD391E3B
     * JSON file for SHiVAi pipeline: [model_info_t1-flair-wmh-v2.json](model_info_t1-flair-wmh-v2.json)
 
 * v1/T1-FLAIR.WMH: is a multimodal segmentation model based on v0 and trained with more images from other datasets.
-    * due to file size limitation, the models can be found [here](https://cloud.efixia.com/sharing/jxHpYIJQB) : https://cloud.efixia.com/sharing/jxHpYIJQB
+    * due to file size limitation, the models can be found [here](https://cloud.efixia.com/sharing/sM3n4kDJT) : https://cloud.efixia.com/sharing/sM3n4kDJT
     * MD5 checksum : a5523d7d3a8f8adde95c2baf73518afb
     * JSON file for SHiVAi pipeline: [model_info_t1-flair-wmh-v1.json](model_info_t1-flair-wmh-v1.json)
 
 * v0/T1-FLAIR.WMH: is a multimodal segmentation model described in the publication.
-    * due to file size limitation, the models can be found [here](https://cloud.efixia.com/sharing/Tq8LqpCbc) : https://cloud.efixia.com/sharing/Tq8LqpCbc
+    * due to file size limitation, the models can be found [here](https://cloud.efixia.com/sharing/HxO1Lle0w) : https://cloud.efixia.com/sharing/HxO1Lle0w
     * MD5 checksum : a371a14c641305ab81efb21545623fbf
     * JSON file for SHiVAi pipeline: [model_info_t1-flair-wmh-v0.json](model_info_t1-flair-wmh-v0.json)
 
 * v0/FLAIR.WMH: is a monomodal segmentation model using only FLAIR modality.
-    * due to file size limitation, the models can be found [here](https://cloud.efixia.com/sharing/bOzPqhGiz) : https://cloud.efixia.com/sharing/bOzPqhGiz
+    * due to file size limitation, the models can be found [here](https://cloud.efixia.com/sharing/V0huhyXe7) : https://cloud.efixia.com/sharing/V0huhyXe7
     * MD5 checksum : 63602474fa62af1c83efabefd0bd0c79
     * JSON file for SHiVAi pipeline: [model_info_flair-wmh.json](model_info_flair-wmh.json)
 
